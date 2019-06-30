@@ -1,0 +1,25 @@
+<html>
+<head> <title> my page</title>
+	<script type="text/javascript">
+	function myFunction(){
+			var a=document.getElementById("marks").value;
+			if(a>33){
+				document.write("pass"+a);
+			}
+			else{
+				document.write("fail"+a);
+				} 
+		}
+	
+	</script>
+
+</head>
+<body>
+<h1> please enter you marks : <h1> <input type ="text" id ="marks" > <br>
+<input type = "button" value= "Click me" id = "press_me" onclick = "myFunction()"> 
+<p id ="demo"> </p>
+
+
+
+</body>
+</html>

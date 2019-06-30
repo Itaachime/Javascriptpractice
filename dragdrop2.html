@@ -1,0 +1,99 @@
+<html>
+<head>
+<script type="text/javascript">
+		function allowDrop(ev){
+					ev.preventDefault();
+		}
+		
+		function dragStart(ev){
+					ev.dataTransfer.setData("text1", ev.target.id);
+		}
+		
+		function dragDrop(ev){
+				ev.preventDefault();
+				var data = ev.dataTransfer.getData("text1");	
+				ev.target.appendChild(document.getElementById(data));
+		}
+		
+		function addtodo(){
+		/*var d=document.getElementsByClassName("add");*/
+		querySelector('.add').innerHTML += "<div id="box1_3" draggable="true"ondragstart="dragStart(event)"></div>";  
+		
+		}
+		
+	
+</script>
+
+<style type="text/css">
+			#box{
+				position: relative;
+				justify-content:center;
+				margin: 10px; 
+				width: 360px; 
+				height: 390px; 
+				border: 3px solid red; 
+				padding-bottom:10px ;
+				padding-left:10px;
+				padding-right:10px ;
+				padding-top:10px; 
+				background-color: white;
+			
+				
+			
+			}
+
+			#box1,#box2{
+			position: relative;
+				margin-left:10px;
+				width: 155px;
+				height: 380px; 
+				border: 1px solid green; 
+				padding: 2px; 
+				float:left;
+				background-color: white; 
+			}
+			
+			.add{
+				margin: 1px; 
+				width: 145px; 
+				height: 40px; 
+				border: 1px solid green; 
+				padding: 2px; 
+				float:left;
+				background-color: gray; 
+			}
+			
+			#gap{
+			height: 380px;
+			width: 10px;
+			float: left;
+			
+			}
+			
+
+</style>
+
+</head>
+
+<body>
+
+<div id="box">
+
+<div id = "box1" ondragover="dragDrop(event)" ondrop="dragDrop(event)"> 
+			<div class="add" id="box1_1" draggable="true"ondragstart="dragStart(event)"></div> 
+			<div class="add"id="box1_2" draggable="true"ondragstart="dragStart(event)"></div> 
+			
+		</div> 
+
+<div id="gap"></div>
+
+<div id="box2" ondrop="dragDrop(event)" ondragover="allowDrop(event)"></div> 
+</div>
+
+<input type ="button" value="clickme" id="btn" onclick="addtodo() "> 
+
+
+
+</body>
+
+</html>

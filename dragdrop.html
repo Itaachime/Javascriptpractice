@@ -1,0 +1,53 @@
+<html>
+<head>
+<style type="text/css">
+
+	#fist1{
+		float: left;
+		width: 200px;
+		height: 200px;
+		margin: 10px;
+		padding: 1px;
+		border: 1px solid black;
+	}
+	
+
+</style>
+
+<script type="text/javascript">
+			function allowDrop(ev) {
+			ev.preventDefault();
+			}
+
+			function drag(ev) {
+			ev.dataTransfer.setData("text", ev.target.id);
+			}
+
+			function drop(ev) {
+			ev.preventDefault();
+			var data = ev.dataTransfer.getData("text");
+			ev.target.appendChild(document.getElementById(data);
+			}		
+</script>
+
+	
+</head>
+<body>
+
+<h1> drag and drop </h1>
+
+<p>drag below image to the next box</p>
+
+<div id="fist1" ondrop="drop(event)" ondragover="allowDrop(event)" border="3px">
+
+<p id="drag1"  draggable="true" ondragstart="drag(event)"> we will we will rock on</p>
+<p id="drag3"  draggable="true" ondragstart="drag(event)"> we will we will rock on</p>
+<img id="drag2"src = "meee.jpg" width="100%" height="50%" draggable="true" ondragstart="drag(event)">
+
+</div>
+
+<div id="fist1" ondrop="drop(event)" ondragover="allowDrop(event)"> 
+</div> 
+  
+</body>
+</html>

@@ -1,0 +1,126 @@
+<html>
+<head>
+<script type="text/javascript">
+		function allowDrop(ev){
+					ev.preventDefault();
+		}
+		
+		function dragStart(ev){
+		
+					ev.dataTransfer.setData("text1", ev.target.id);
+		}
+		
+		function dragDrop(ev){
+
+				ev.preventDefault();
+				var data = ev.dataTransfer.getData("text1");	
+				ev.target.appendChild(document.getElementById(data));
+				}
+		
+		function addtodo() {
+         // create a couple of elements 
+         var heading = document.createElement("p"); 					 //creating a HTML tag
+         var heading_text = document.createTextNode("Big Head!");		// assigning value to tag	
+         heading.appendChild(heading_text);								//inserting value to created HTML tag
+			document.body.appendChild(heading);							//inserting value to created HTML tag
+		 //putting the tag to body
+		 
+		 
+		var new_box = document.createElement("div"); 
+			new_box.setAttribute("class","add2");
+			new_box.setAttribute("id","box_2");
+			new_box.setAttribute("draggable","true");
+			new_box.setAttribute("ondragstart","dragStart(event)");
+			//element.setAttribute('ondragstart',dragStart(event) );
+		document.getElementById('box1').appendChild(new_box).appendChild(heading);       
+					//new_box.setAttribute("border","3px ");
+			}
+	
+			
+</script>
+
+<style type="text/css">
+			#box{
+				position: relative;
+				justify-content:center;
+				margin: 10px; 
+				width: 360px; 
+				height: 390px; 
+				border: 3px solid red; 
+				padding-bottom:10px ;
+				padding-left:10px;
+				padding-right:10px ;
+				padding-top:10px; 
+				background-color: white;
+			
+				
+			
+			}
+
+			#box1,#box2{
+			position: relative;
+				margin-left:10px;
+				width: 155px;
+				height: 380px; 
+				border: 1px solid green; 
+				padding: 1px; 
+				float:left;
+				background-color: white; 
+			}
+			
+			.add{
+				margin: 1px; 
+				margin-bottom:1px;
+				width: 145px; 
+				height: 40px; 
+				border: 1px solid green; 
+				padding: 2px; 
+				float:left
+				 
+			}
+			.add2{
+				margin-top : 1px;
+				magrin-bottom : 1px;
+				width: 145px; 
+				height: 40px; 
+				border: 1px solid green; 
+				padding: 2px; 
+				float:left
+				 
+			}
+			
+			#gap{
+			height: 380px;
+			width: 10px;
+			float: left;
+			
+			}
+			
+
+</style>
+
+</head>
+
+<body>
+
+<div id="box">
+
+<div id = "box1" ondragover="dragDrop(event)" ondrop="dragDrop(event)"> 
+			<span id="inselement">
+			<div class="add" id="box1_1" draggable="true"ondragstart="dragStart(event)">us </div> 
+			
+			</span>
+		</div> 
+
+<div id="gap"></div>
+
+<div id="box2" ondrop="dragDrop(event)" ondragover="allowDrop(event)"></div> 
+</div>
+
+<input type ="button" value="clickme" id="btn" onclick="addtodo()"> 
+
+
+
+</body>
+
+</html>
