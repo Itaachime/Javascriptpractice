@@ -1,0 +1,211 @@
+<html>
+<head>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<script type="text/javascript" src="http://www.pureexample.com/js/lib/jquery.ui.touch-punch.min.js"></script>
+
+<script type = "text/javascript">
+var a = 0;
+
+function addtodo() {
+         // create a couple of elements 
+         var heading = document.createElement("p"); 					 //creating a HTML tag
+        	heading.id='txt'+(a);									//assigning Id
+			
+			 var heading_text = document.createTextNode('txt'+(a));				// assigning value to defaul value tag	
+			heading.setAttribute("contenteditable",true);
+				heading.appendChild(heading_text);				 //inserting value to created HTML tag
+			
+		 //putting the tag to body
+		 	var new_box = document.createElement("li"); 
+			new_box.setAttribute("class","add2");
+			new_box.id ='box_1_'+(a);
+			new_box.setAttribute("draggable","true");
+			new_box.setAttribute("ondragstart","dragStart(event)");
+		document.getElementById('box1').appendChild(new_box).appendChild(heading);    
+		
+		a++;
+		}
+
+function addtodo2() {
+
+			//putting the tag to body
+		 	var new_box = document.createElement("div"); 
+			new_box.setAttribute("class","add2");
+			new_box.id ='box_2_'+(a);
+			new_box.setAttribute("draggable","true");
+			new_box.setAttribute("ondragstart","dragStart(event)");
+			    
+		
+
+			         // create a couple of elements 
+         var heading = document.createElement("p"); 					 //creating a HTML tag
+        	heading.id='txt'+(a);									//assigning Id
+			heading.class="txtcls";
+			 var heading_text = document.createTextNode('txt'+(a));				// assigning value to defaul value tag	
+			heading.setAttribute("contenteditable",true);
+				heading.appendChild(heading_text);				 //inserting value to created HTML tag
+			
+			// create a couple of elements 
+         var radio_btn = document.createElement("input"); 					 //creating a HTML tag
+			radio_btn.type="checkbox";
+        	radio_btn.id='txt'+(a);									//assigning Id
+			radio_btn.value=" true";
+			
+			 
+			
+		 
+		document.getElementById('box2').appendChild(new_box).appendChild(radio_btn).appendSibling
+		new_box.insertAfter(heading,radio_btn.nextSibling); 
+		
+			
+		
+		a++;
+		}
+
+// jquery here
+
+$( function() {
+		$( "#box2, #box1" ).sortable({
+			connectWith: ".connectedSortable"
+		}).disableSelection();
+	} )
+  
+// var a = 0;		
+/*		function allowDrop(ev){
+					ev.preventDefault();
+		}
+		
+		function dragStart(ev){
+		
+					ev.dataTransfer.setData("text1", ev.target.id);
+		}  */
+		
+</script>
+
+<style type="text/css">
+			#box{
+				position: static;
+				
+				margin: 0px; 
+				width: 400px; 
+				height: 450px; 
+				border: 3px solid red; 
+				padding-bottom:10px ;
+				padding-left:10px;
+				padding-right:10px ;
+				padding-top:10px; 
+				background-color: white;
+			
+				
+			
+			}
+
+			#box1{
+			position: relative;
+				margin-left:10px;
+				width: 45%;
+				height: 90%; 
+				border: 1px solid green; 
+				padding: 0px; 
+				float:left;
+				background-color: white; 
+			}
+			
+			#box2{
+			position: relative;
+				margin-left:10px;
+				width: 45%;
+				height: 90%; 
+				border: 1px solid green; 
+				padding: 0px; 
+				float:left;
+				background-color: white; 
+			}
+			
+			.add{
+				margin-top : 1px;
+				magrin-bottom : 1px;
+				text-align:left;
+				width: 100%x; 
+				height: 20px; 
+				position:static	;
+				background-color: grey;
+				cursor: pointer;
+				list-style-type:none;
+				list-style: none;
+				display: cell;
+				
+				 
+			}
+			
+			
+			
+						
+			.add2{
+				margin-top : 1px;
+				magrin-bottom : 1px;
+				text-align:left;
+				width: 100%x; 
+				height: 20px; 
+				position:static	;
+				background-color: grey;
+				cursor: pointer;
+				
+				list-style: none;
+				display: row;
+			}
+			
+					input[type="checkbox"] {
+					display: table-cell;
+					}
+				
+			.txtcls p{
+				position: absolute; 
+				margin-block-end: 5px;
+				margin-top: 3px;
+				margin-bottom: 3px;	
+				display:cell;
+			}
+				
+			#btn{
+			width: 100%; 
+			height: 40px;	
+			background-color:grey;				
+			position: absolute; 
+			bottom: 0;
+			}
+
+											
+
+</style>
+
+</head>
+
+<body>
+
+<div id="box">
+
+		<div id = "box1" ondrop="dragDrop(event)" ondragover="allowDrop(event)" class="connectedSortable"> 
+			
+			<ul>
+			<li class="add" id="add3" draggable="true">Click me </li> 
+			</ul>
+			<div value="clickme" id="btn" onclick="addtodo()">clickme</div>
+		</div> 
+		
+
+		<div id="gap"></div>
+
+		<div id="box2" class="connectedSortable">
+		<div value="clickme" id="btn" onclick="addtodo2()">clickme</div>
+		</div> 
+		
+		
+</div>
+
+
+</body>
+
+</html>

@@ -14,16 +14,16 @@
 		
 		function dragDrop(ev){
 				ev.preventDefault();
-				var data = ev.dataTransfer.getData("text1");	
+				var data = ev.dataTransfer.getData("text1");
 				ev.target.appendChild(document.getElementById(data));
-				
-				
-				}
+		
+		
+		}
 		
 		function addtodo() {
          // create a couple of elements 
          var heading = document.createElement("p"); 					 //creating a HTML tag
-         var heading_text = document.createTextNode("text1");				// assigning value to defaul value tag	
+         var heading_text = document.createTextNode("text");				// assigning value to defaul value tag	
 			heading.setAttribute("contenteditable","true");
 			heading.id='txt'+(a);									//assigning Id
 			 heading.appendChild(heading_text);								//inserting value to created HTML tag
@@ -38,7 +38,7 @@
 			new_box.setAttribute("ondragstart","dragStart(event)");
 		document.getElementById('box1').appendChild(new_box).appendChild(heading);    
 		
-		
+		a++;
 		}
 	
 	
@@ -46,8 +46,8 @@
 
 <style type="text/css">
 			#box{
-				position: relative;
-				justify-content:center;
+				position: static;
+				
 				margin: 10px; 
 				width: 360px; 
 				height: 390px; 
@@ -80,8 +80,8 @@
 				height: 40px; 
 				border: 1px solid green; 
 				background-color: rgba(50, 115, 220, 0.3);
-				float:left;
 				position:relative;
+				display:table-cell;
 				
 				 
 			}
@@ -92,13 +92,12 @@
 				height: 40px; 
 				border: 1px solid green; 
 				background-color:gray;
-				position:relative;
-				float:left;
-				display:block;
+				position:static;
+				display:cell;
+				cursor: pointer;
 			}
 			
-			
-			
+					
 			
 			#gap{
 			height: 380px;
@@ -116,7 +115,7 @@
 
 <div id="box">
 
-<div id = "box1" ondragover="dragDrop(event)" ondrop="dragDrop(event)"> 
+<div id = "box1" ondrop="dragDrop(event)" ondragover="allowDrop(event)""> 
 			<span id="inselement">
 			<div class="add" id="box1_1" draggable="true"ondragstart="dragStart(event)"  >us </div> 
 			
